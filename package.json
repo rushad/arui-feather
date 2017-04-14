@@ -112,7 +112,6 @@
     "karma-junit-reporter": "^1.1.0",
     "karma-mocha": "^1.1.1",
     "karma-mocha-reporter": "^2.2.3",
-    "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.1",
     "library-utils": "^1.1.0",

@@ -21,14 +21,13 @@ delete babelLoaderConfig.exclude;
 
 module.exports = function (config) {
     const cfg = {
-        browsers: ['PhantomJS_Desktop'],
+        browsers: ['ChromeHeadless'],
 
         singleRun: true,
 
         plugins: [
             require('karma-webpack'),
             require('karma-chrome-launcher'),
-            require('karma-phantomjs-launcher'),
             require('karma-sourcemap-loader')
         ],
 
@@ -42,14 +41,17 @@ module.exports = function (config) {
         },
 
         customLaunchers: {
-            PhantomJS_Desktop: {
-                base: 'PhantomJS',
-                options: {
-                    viewportSize: {
-                        width: 1280,
-                        height: 100
-                    }
-                }
+            ChromeHeadless: {
+                base: 'Chrome',
+                flags: [
+                    '--no-sandbox',
+                    // See https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md
+                    '--headless',
+                    '--disable-gpu',
+                    // Without a remote debugging port, Google Chrome exits immediately.
+                    '--remote-debugging-port=9222',
+                    '--window-size=1280,100'
+                ]
             }
         },
 
