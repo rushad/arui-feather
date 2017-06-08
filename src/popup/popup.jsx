@@ -145,7 +145,7 @@ class Popup extends React.Component {
     content;
 
     handleResizeWindow = debounce(() => {
-        if (this.isPropsToPositionCorrect()) {
+        if (this.props.visible && this.isPropsToPositionCorrect()) {
             this.redraw();
         }
     }, 200);
@@ -178,17 +178,7 @@ class Popup extends React.Component {
             && nextContext.positioningContainerElement) {
             this.setState({
                 receivedContainer: true
-            }, () => {
-                if (this.props.visible) {
-                    this.redraw();
-                }
             });
-
-            return;
-        }
-
-        if (nextProps.visible !== this.props.visible) {
-            this.redraw();
         }
     }
 
@@ -211,7 +201,7 @@ class Popup extends React.Component {
     }
 
     render(cn) {
-        if (!this.isContainerReady()) {
+        if (!this.props.visible || !this.isContainerReady()) {
             return false;
         }
 
@@ -224,7 +214,6 @@ class Popup extends React.Component {
                         direction: this.state.direction,
                         type: (this.props.target === 'anchor') && (this.props.type === 'tooltip') && this.props.type,
                         size: this.props.size,
-                        visible: this.props.visible,
                         invalid: this.props.invalid,
                         height: this.props.height,
                         hovered: this.state.hovered,
@@ -327,7 +316,10 @@ class Popup extends React.Component {
         }
 
         this.anchor = target;
-        this.redraw();
+
+        if (this.props.visible) {
+            this.redraw();
+        }
     }
 
     /**
@@ -339,7 +331,9 @@ class Popup extends React.Component {
      */
     setPosition(left, top) {
         this.position = { left, top };
-        this.redraw();
+        if (this.props.visible) {
+            this.redraw();
+        }
     }
 
     /**
@@ -416,12 +410,11 @@ class Popup extends React.Component {
             throw new Error('Cannot show popup without target or position');
         }
 
-        if (!this.domElemPopup) {
-            this.domElemPopup = this.popup;
-            this.domElemPopupContent = this.content;
-        }
+        this.domElemPopup = this.popup;
+        this.domElemPopupContent = this.content;
 
         let popupHash = this.getPopupHash();
+
         let bestDrawingParams = this.props.target === 'position'
             ? { top: this.position.top, left: this.position.left }
             : calcBestDrawingParams(popupHash, calcTargetDimensions(popupHash), calcFitContainerDimensions(popupHash));
