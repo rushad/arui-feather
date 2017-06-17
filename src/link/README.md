@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 Обычная ссылка
 ```
 <div>
@@ -7,15 +5,8 @@
         <span className='row'>
             <div className='column'>
                 <Link
-                    text='Ссылка'
+                    text='Вернуться в интернет-банк'
                     size={ size }
-                />
-            </div>
-            <div className='column'>
-                <Link
-                    text='Ссылка'
-                    size={ size }
-                    disabled={ true }
                 />
             </div>
         </span>
@@ -32,17 +23,9 @@ const layoutStyle = {
         <span className='row'>
             <div className='column'>
                 <Link
-                    text='Ссылка'
+                    text='Показать больше'
                     size={ size }
                     pseudo={ true }
-                />
-            </div>
-            <div className='column'>
-                <Link 
-                    text='Ссылка'
-                    size={ size }
-                    pseudo={ true }
-                    disabled={ true }
                 />
             </div>
         </span>
@@ -50,57 +33,7 @@ const layoutStyle = {
 </div>
 ```
 
-```
-const layoutStyle = {
-    paddingRight: '10px'
-};
-const iconStyle = {
-    marginRight: '5px'
-};
-<div>
-<<<<<<< HEAD
-    {['', 'pseudo', 'disabled', 'checked'].map(mod => (
-        <div key={ mod }>
-            {['s', 'm', 'l', 'xl'].map(size => {
-                const props = {
-                    text: `${mod ? `${mod} ` : ''}link`,
-                    size,
-                    [mod]: true
-                };
-                return  (
-                    <span style={ layoutStyle }>
-                        <Link { ...props } >
-                            <Icon { ...props }
-                                style={ iconStyle }
-                                icon='ok' />
-                        </Link>
-                    </span>
-                );
-            })}
-        </div>
-=======
-    {['s', 'm', 'l', 'xl'].map(size => {
-        const props = {
-            text: 'Ссылка',
-            size
-        };
-        return (
-            <span className='row' >
-                <Link { ...props } >
-                    <div style={ iconStyle }>
-                        <Icon { ...props } 
-                            style={ iconStyle }
-                            icon='ok'
-                        />
-                    </div>
-                </Link>
-            </span>
-        );
-    })}
-</div>
-```
-
-Ссылки без подчеркивания
+Ссылки без подчеркивания TODO РОВНЫЕ КОЛОНКИ
 ```
 <div>
     {['s', 'm', 'l', 'xl'].map(size => (
@@ -108,9 +41,11 @@ const iconStyle = {
             <div className='column'>
                 <Link size={ size } >😊</Link>
             </div>
+            
             <div className='column'>
-                <Link size={ size } disabled={ true } >😊</Link>
+                <Link size={ size } >¯\_(ツ)_/¯</Link>
             </div>
+            
         </span>
     ))}
 </div>
