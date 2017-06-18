@@ -19,7 +19,8 @@ function renderAddons() {
         size='m'
         placeholder='Введите сумму'
         rightAddons={ renderAddons() }
-        maskFormatCharacters={{validate: (symb)=> parseInt(sym)}}
+        type='number'
+        maskFormatCharacters={{ validate: (symb)=> symb === 'a'}}
     />
 </div>    
 ```
@@ -40,19 +41,30 @@ const sizes = ['s', 'm', 'l', 'xl'];
 </div>
 ```
 
-С крестиком "Очистить" TODO
+С крестиком "Очистить"
 ```
 const sizes = ['s', 'm', 'l', 'xl'];
+class StateFullInput extends React.Component {
+    constructor() {
+        this.state = { value: 'Корм для кота' };
+    }
+    render() {
+        return (
+            <Input
+                placeholder='Введите что-нибудь'
+                value={ this.state.value }
+                clear={ true }
+                view='line'
+                onChange={(value) => this.setState({ value })}
+                size={ this.props.size }
+             />
+        );
+    }
+}
 <div>
     {sizes.map(size => (
         <div className='row'>
-             <Input
-                placeholder='Введите что-нибудь'
-                value='Корм для кота'
-                clear={ true }
-                view='line'
-                size={ size }
-             />
+             <StateFullInput size={ size } />
         </div>
     ))}
 </div>
@@ -78,15 +90,23 @@ const sizes = ['s', 'm', 'l', 'xl'];
 С ошибкой
 ```
 const sizes = ['s', 'm', 'l', 'xl'];
+initialState = {
+    value: 'Конsтантин',
+    error: true
+};
 <div>
     {sizes.map(size => (
         <div className='row'>
              <Input
                 placeholder='Введите что-нибудь'
-                error='Только кириллические символы'
+                error={ state.error ? 'Только кириллические символы': null }
                 view='line'
                 size={ size }
-                value={'Конsтантин'}
+                value={ state.value }
+                onChange={ (value) => setState({
+                    value,
+                    error: value.search(/[a-z]/i) !== -1
+                }) }
              />
         </div>
     ))}
