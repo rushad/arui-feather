@@ -4,7 +4,11 @@
 
 @import '../vars.css';
 
-body {
+body.theme_alfa-on-white {
+    background-color: #fff;
+}
+
+body.theme_alfa-on-color {
     background-attachment: fixed;
     background-color: #2a2e37;
     background-image: url(images/bg.png);
