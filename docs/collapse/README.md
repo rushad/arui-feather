@@ -14,13 +14,14 @@ import Collapse from 'arui-feather/collapse';
 
 | Prop  | Тип  | По умолчанию | Обязательный | Описание |
 | ----- | ---- | ------------ | ------------ |----------|
-| isExpanded | Boolean |  |  | Управление состоянием `expand`/`collapse` компонента |
+| isExpanded | Boolean | `false`  |  | Управление состоянием `expand`/`collapse` компонента |
 | collapsedLabel | String | `'Expand'`  |  | Текст ссылки в `expand` состоянии |
-| expandedLabel | String | `'Collapse'`  |  | Текст ссылки в `collapse` состоянии |
+| expandedLabel | String |  |  | Текст ссылки в `collapse` состоянии |
+| direction | [DirectionEnum](#DirectionEnum) | `'up'`  |  | Направление раскрытия collapse, вниз (down) или наверх (up), по умолчанию он расскрывается вверх |
 | children | Array.<Node>\|Node |  |  | Дочерние элементы `Collapse` |
 | theme | [ThemeEnum](#ThemeEnum) |  |  | Тема компонента |
 | className | Function\|String |  |  | Дополнительный класс |
-| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` |
+| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` возвращает true или false |
 
 
 
@@ -33,6 +34,12 @@ import Collapse from 'arui-feather/collapse';
 
 
 
+
+
+### <a id="DirectionEnum"></a>DirectionEnum
+
+ * `'up'`
+ * `'down'`
 
 
 ### <a id="ThemeEnum"></a>ThemeEnum
