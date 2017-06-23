@@ -116,7 +116,6 @@ describe('collapse', () => {
     it('should have default expanded label', () => {
         let collapse = render(<Collapse isExpanded={ false }>Collapsing text</Collapse>);
         let linkNode = collapse.node.querySelector('.link');
-
         expect(linkNode).to.have.text('Раскрыть');
     });
 });

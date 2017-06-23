@@ -33,7 +33,7 @@ class Collapse extends React.Component {
         theme: Type.oneOf(['alfa-on-color', 'alfa-on-white']),
         /** Дополнительный класс */
         className: Type.oneOfType([Type.func, Type.string]),
-        /** Обработчик смены состояния `expand`/`collapse` */
+        /** Обработчик смены состояния `expand`/`collapse` возвращает true или false */
         onExpandedChange: Type.func
     };
 
@@ -44,7 +44,7 @@ class Collapse extends React.Component {
     };
 
     state = {
-        isExpanded: false
+        isExpanded: this.props.isExpanded
     };
 
     render(cn) {

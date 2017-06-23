@@ -21,7 +21,7 @@ import Collapse from 'arui-feather/collapse';
 | children | Array.<Node>\|Node |  |  | Дочерние элементы `Collapse` |
 | theme | [ThemeEnum](#ThemeEnum) |  |  | Тема компонента |
 | className | Function\|String |  |  | Дополнительный класс |
-| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` |
+| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` возвращает true или false |
 
 
 
