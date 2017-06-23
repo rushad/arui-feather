@@ -117,6 +117,6 @@ describe('collapse', () => {
         let collapse = render(<Collapse isExpanded={ false }>Collapsing text</Collapse>);
         let linkNode = collapse.node.querySelector('.link');
 
-        expect(linkNode).to.have.text('Expand');
+        expect(linkNode).to.have.text('Раскрыть');
     });
 });

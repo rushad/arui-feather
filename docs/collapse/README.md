@@ -14,14 +14,14 @@ import Collapse from 'arui-feather/collapse';
 
 | Prop  | Тип  | По умолчанию | Обязательный | Описание |
 | ----- | ---- | ------------ | ------------ |----------|
-| isExpanded | Boolean | `false`  |  | Управление состоянием `expand`/`collapse` компонента |
-| collapsedLabel | String | `'Expand'`  |  | Текст ссылки в `expand` состоянии |
-| expandedLabel | String |  |  | Текст ссылки в `collapse` состоянии |
+| isExpanded | Boolean |  |  | Управление состоянием `expand`/`collapse` компонента |
+| collapsedLabel | String | `'Раскрыть'`  |  | Текст ссылки в `expand` состоянии |
+| expandedLabel | String | `'Закрыть'`  |  | Текст ссылки в `collapse` состоянии, можно указать состояниме null и тогда он не будет показан |
 | direction | [DirectionEnum](#DirectionEnum) | `'up'`  |  | Направление раскрытия collapse, вниз (down) или наверх (up), по умолчанию он расскрывается вверх |
 | children | Array.<Node>\|Node |  |  | Дочерние элементы `Collapse` |
 | theme | [ThemeEnum](#ThemeEnum) |  |  | Тема компонента |
 | className | Function\|String |  |  | Дополнительный класс |
-| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` возвращает true или false |
+| onExpandedChange | Function |  |  | Обработчик смены состояния `expand`/`collapse` |
 
 
 

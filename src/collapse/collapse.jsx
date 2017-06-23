@@ -23,7 +23,7 @@ class Collapse extends React.Component {
         isExpanded: Type.bool,
         /** Текст ссылки в `expand` состоянии */
         collapsedLabel: Type.string,
-        /** Текст ссылки в `collapse` состоянии */
+        /** Текст ссылки в `collapse` состоянии, можно указать состояниме null и тогда он не будет показан */
         expandedLabel: Type.string,
         /** Направление раскрытия collapse, вниз (down) или наверх (up), по умолчанию он расскрывается вверх */
         direction: Type.oneOf(['up', 'down']),
@@ -33,18 +33,18 @@ class Collapse extends React.Component {
         theme: Type.oneOf(['alfa-on-color', 'alfa-on-white']),
         /** Дополнительный класс */
         className: Type.oneOfType([Type.func, Type.string]),
-        /** Обработчик смены состояния `expand`/`collapse` возвращает true или false */
+        /** Обработчик смены состояния `expand`/`collapse` */
         onExpandedChange: Type.func
     };
 
     static defaultProps = {
-        collapsedLabel: 'Expand',
-        direction: 'up',
-        isExpanded: false
+        collapsedLabel: 'Раскрыть',
+        expandedLabel: 'Закрыть',
+        direction: 'up'
     };
 
     state = {
-        isExpanded: this.props.isExpanded
+        isExpanded: false
     };
 
     render(cn) {
@@ -91,18 +91,18 @@ class Collapse extends React.Component {
     }
 
     renderText() {
-        if (this.props.expandedLabel) {
-            return this.state.isExpanded
-                ? this.props.expandedLabel
-                : this.props.collapsedLabel;
+        const expanded = this.props.isExpanded !== undefined
+            ? this.props.isExpanded
+            : this.state.isExpanded;
+        if (this.props.expandedLabel === null) {
+            return this.props.collapsedLabel;
         }
-
-        return this.props.collapsedLabel;
+        return expanded ? this.props.expandedLabel : this.props.collapsedLabel;
     }
 
     @autobind
     handleExpandedChange() {
-        const newExpandedValue = !this.state.isExpanded;
+        const newExpandedValue = this.props.isExpanded !== undefined ? this.props.isExpanded : this.state.isExpanded;
         this.setState({
             isExpanded: newExpandedValue
         });
